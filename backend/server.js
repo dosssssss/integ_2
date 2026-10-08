@@ -1,4 +1,7 @@
+require('dotenv').config({ quiet: true });
+
 const express = require('express');
+const connectDB = require('./config/db');
 const customerRoutes = require('./routes/customerRoutes');
 
 const app = express();
@@ -15,6 +18,8 @@ app.use((req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
 });
