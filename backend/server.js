@@ -1,8 +1,10 @@
 require('dotenv').config({ quiet: true });
 
 const express = require('express');
+const path = require('path');
 const connectDB = require('./config/db');
 const customerRoutes = require('./routes/customerRoutes');
+const foodRoutes = require('./routes/foodRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,6 +12,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use('/api/customers', customerRoutes);
+app.use('/api/foods', foodRoutes);
+app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
 app.use((req, res) => {
   res.status(404).json({
