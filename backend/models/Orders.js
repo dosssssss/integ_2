@@ -1,37 +1,31 @@
-const mongoose = require("mongoose");
+let orders = [];
+let nextId = 1;
 
-const orderSchema = new mongoose.Schema({
-  customer: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Customer",
-    required: true
-  },
+function createOrder({ customer, items, total }) {
+  const order = {
+    id: nextId++,
+    customer,
+    items,
+    total,
+    createdAt: new Date().toISOString()
+  };
 
-  items: [
-    {
-      food: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Food",
-        required: true
-      },
-      quantity: {
-        type: Number,
-        required: true,
-        min: 1
-      },
-      price: {
-        type: Number,
-        required: true,
-        min: 0
-      }
-    }
-  ],
+  orders.push(order);
+  return order;
+}
 
-  total: {
-    type: Number,
-    required: true,
-    min: 0
-  }
-});
+function findByCustomer(customerId) {
+  return orders.filter(
+    (order) => order.customer === Number(customerId)
+  );
+}
 
-module.exports = mongoose.model("Order", orderSchema);
+function getAllOrders() {
+  return orders;
+}
+
+module.exports = {
+  createOrder,
+  findByCustomer,
+  getAllOrders
+};
