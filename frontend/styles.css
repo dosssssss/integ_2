@@ -498,6 +498,46 @@ a {
   font-size: 12px;
 }
 
+.order-summary {
+  margin-top: 22px;
+  border-top: 1px solid #e9e7df;
+  text-align: left;
+}
+
+.order-summary-item {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid #e9e7df;
+  color: #596051;
+  font-size: 11px;
+}
+
+.order-summary-details {
+  line-height: 1.5;
+}
+
+.order-summary-item strong {
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.order-summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 !important;
+  padding: 16px 0 20px;
+  color: #686d60;
+  text-align: left;
+}
+
+.order-summary-total strong {
+  color: var(--ink);
+  font-size: 15px;
+}
+
 .new-order {
   padding: 10px 14px;
   border: 1px solid #d9dccd;

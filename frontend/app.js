@@ -17,6 +17,8 @@ const checkoutMessage = document.querySelector("#checkout-message");
 const placeOrderButton = document.querySelector("#place-order");
 const cartSection = document.querySelector("#cart");
 const orderConfirmation = document.querySelector("#order-confirmation");
+const orderSummary = document.querySelector("#order-summary");
+const orderSummaryTotal = document.querySelector("#order-summary-total");
 let submitting = false;
 
 function setCheckoutMessage(message, isError = false) {
@@ -98,6 +100,30 @@ function renderCart() {
   );
 }
 
+function renderOrderSummary(items) {
+  const summaryList = document.createElement("div");
+  summaryList.className = "order-summary-list";
+
+  for (const item of items) {
+    const row = document.createElement("div");
+    row.className = "order-summary-item";
+
+    const details = document.createElement("span");
+    details.className = "order-summary-details";
+    details.textContent = `${item.food} × ${item.quantity}`;
+
+    const subtotal = document.createElement("strong");
+    subtotal.textContent = peso.format(item.price * item.quantity);
+
+    row.append(details, subtotal);
+    summaryList.append(row);
+  }
+
+  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  orderSummary.replaceChildren(summaryList);
+  orderSummaryTotal.textContent = peso.format(total);
+}
+
 document.querySelectorAll("[data-add-item]").forEach((button) => {
   button.addEventListener("click", () => {
     const id = button.dataset.addItem;
@@ -147,7 +173,8 @@ checkoutForm.addEventListener("submit", async (event) => {
     if (!orderResponse.ok || !orderResult.success) {
       throw new Error(orderResult.message || "Could not place your order.");
     }
-    cart.clear();
+
+    renderOrderSummary(items);
     cart.clear();
     cartSection.hidden = true;
     orderConfirmation.hidden = false;
