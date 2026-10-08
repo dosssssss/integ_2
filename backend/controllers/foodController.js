@@ -16,6 +16,10 @@ async function listFoods(req, res) {
   }
 }
 
+async function getFoods(req, res) {
+  return listFoods(req, res);
+}
+
 async function searchFoods(req, res) {
   try {
     const { name } = req.query;
@@ -36,4 +40,4 @@ async function searchFoods(req, res) {
   }
 }
 
-module.exports = { listFoods, searchFoods };
+module.exports = { listFoods, getFoods, searchFoods };
