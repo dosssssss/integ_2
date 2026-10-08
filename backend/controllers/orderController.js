@@ -45,4 +45,22 @@ async function createOrder(req, res) {
   }
 }
 
-module.exports = { createOrder };
+async function getCustomerOrders(req, res) {
+  try {
+    const customerId = req.params.customerId;
+
+    const orders = Order.findByCustomer(customerId);
+
+    return res.status(200).json({
+      success: true,
+      data: orders
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to get customer orders'
+    });
+  }
+}
+
+module.exports = { createOrder, getCustomerOrders };
