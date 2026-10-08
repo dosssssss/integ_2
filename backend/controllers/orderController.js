@@ -7,9 +7,9 @@ async function createOrder(req, res) {
   try {
     const { customer, items } = req.body;
 
-    const customerExists = findById(customer);
+    const customerExists = customer == null ? null : findById(customer);
 
-    if (!customerExists) {
+    if (customer != null && !customerExists) {
       return res.status(404).json({
         success: false,
         message: 'Customer not found'
@@ -28,10 +28,17 @@ async function createOrder(req, res) {
     const total = calculateOrderTotal(items);
 
     const order = Order.createOrder({
-      customer,
+      customer: customerExists ? customerExists.id : null,
       items,
       total
     });
+
+    if (!customerExists) {
+      return res.status(201).json({
+        success: true,
+        message: 'Order placed successfully'
+      });
+    }
 
     return res.status(201).json({
       success: true,

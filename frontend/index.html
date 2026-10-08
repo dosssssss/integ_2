@@ -61,7 +61,10 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Pancit Canton (Lucky Me)</th>
+                <th scope="row">
+                  <span class="menu-item-name">Pancit Canton (Lucky Me)</span>
+                  <button class="add-to-cart" type="button" data-add-item="pancit-canton">Add</button>
+                </th>
                 <td>₱20</td>
                 <td><span class="availability">Available</span></td>
               </tr>
@@ -71,18 +74,55 @@
                 <td><span class="availability availability--unavailable">Sold Out</span></td>
               </tr>
               <tr>
-                <th scope="row">Homi Chicken Noodles</th>
+                <th scope="row">
+                  <span class="menu-item-name">Homi Chicken Noodles</span>
+                  <button class="add-to-cart" type="button" data-add-item="homi-chicken">Add</button>
+                </th>
                 <td>₱15</td>
                 <td><span class="availability">Available</span></td>
               </tr>
               <tr>
-                <th scope="row">Lucky Me Beef Noodles</th>
+                <th scope="row">
+                  <span class="menu-item-name">Lucky Me Beef Noodles</span>
+                  <button class="add-to-cart" type="button" data-add-item="lucky-me-beef">Add</button>
+                </th>
                 <td>₱15</td>
                 <td><span class="availability">Available</span></td>
               </tr>
             </tbody>
           </table>
         </div>
+
+        <section class="cart" id="cart" aria-labelledby="cart-title">
+          <div class="cart-heading">
+            <div>
+              <span class="eyebrow"><span class="eyebrow-dot"></span> YOUR ORDER</span>
+              <h3 id="cart-title">Your <em>cart.</em></h3>
+            </div>
+            <span class="cart-count" id="cart-count">0 items</span>
+          </div>
+          <div class="cart-items" id="cart-items" aria-live="polite">
+            <p class="cart-empty">Your cart is empty. Add a noodle favorite to get started.</p>
+          </div>
+          <p class="cart-total">Total <strong id="cart-total">₱0.00</strong></p>
+
+          <div class="checkout">
+            <h4>Checkout</h4>
+            <p class="checkout-hint">Place your order</p>
+            <form id="checkout-form">
+              <button class="place-order" id="place-order" type="submit" disabled>
+                Add items to place your order
+              </button>
+            </form>
+            <p class="checkout-message" id="checkout-message" role="status" aria-live="polite"></p>
+          </div>
+        </section>
+        <section class="order-confirmation" id="order-confirmation" aria-live="polite" hidden>
+          <span class="confirmation-mark" aria-hidden="true">✓</span>
+          <h3>Order received!</h3>
+          <p>Your order has been placed. Thank you!</p>
+          <button class="new-order" id="new-order" type="button">Start another order</button>
+        </section>
       </section>
     </main>
 
@@ -91,5 +131,6 @@
       <p>Good food. Good mood. See you soon.</p>
       <span>© 2026 Food Ordering System</span>
     </footer>
+    <script src="app.js" defer></script>
   </body>
 </html>

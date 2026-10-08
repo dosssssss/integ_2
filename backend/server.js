@@ -24,8 +24,15 @@ app.use((req, res) => {
   });
 });
 
-connectDB().then(() => {
+function startServer() {
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });
-});
+}
+
+if (process.env.MONGO_URI) {
+  connectDB().then(startServer);
+} else {
+  console.warn('MONGO_URI is not set. MongoDB-backed food routes are unavailable.');
+  startServer();
+}

@@ -269,6 +269,251 @@ a {
   color: #77776f;
 }
 
+.menu-item-name {
+  display: inline-block;
+  margin-right: 9px;
+}
+
+.add-to-cart,
+.place-order {
+  border: 0;
+  border-radius: 3px;
+  background: var(--green);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.add-to-cart {
+  padding: 7px 10px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.add-to-cart:hover,
+.place-order:not(:disabled):hover {
+  background: #304c37;
+}
+
+.cart {
+  max-width: 720px;
+  margin: 44px auto 0;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(36, 44, 34, 0.09);
+  border-radius: 5px;
+  background: #fbfaf6;
+  box-shadow: 0 8px 22px rgba(36, 44, 34, 0.035);
+}
+
+.cart[hidden],
+.order-confirmation[hidden] {
+  display: none;
+}
+
+.cart-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.cart-heading h3 {
+  margin: 9px 0 0;
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+.cart-heading h3 em {
+  color: var(--green);
+  font-weight: 500;
+}
+
+.cart-count {
+  padding-bottom: 5px;
+  color: #747970;
+  font-size: 11px;
+}
+
+.cart-items {
+  border-top: 1px solid #e9e7df;
+}
+
+.cart-empty {
+  margin: 0;
+  padding: 18px 0;
+  color: #747970;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cart-item {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid #e9e7df;
+}
+
+.cart-item-details {
+  display: grid;
+  gap: 5px;
+}
+
+.cart-item-name {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cart-item-price {
+  color: #747970;
+  font-size: 11px;
+}
+
+.quantity-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d9dccd;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--green);
+  cursor: pointer;
+  font: inherit;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.quantity-button:hover {
+  background: #edf0e6;
+}
+
+.quantity-value {
+  min-width: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.cart-total {
+  margin: 0;
+  padding: 17px 0 21px;
+  display: flex;
+  justify-content: space-between;
+  color: #686d60;
+  font-size: 12px;
+}
+
+.cart-total strong {
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.checkout {
+  padding-top: 20px;
+  border-top: 1px solid #e9e7df;
+}
+
+.checkout h4 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.checkout-hint {
+  margin: 6px 0 15px;
+  color: #747970;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.place-order {
+  min-height: 42px;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 12px;
+}
+
+.place-order:disabled {
+  background: #a2a69a;
+  cursor: not-allowed;
+}
+
+.checkout-message {
+  min-height: 17px;
+  margin: 11px 0 0;
+  color: var(--green);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.checkout-message--error {
+  color: #9c3f31;
+}
+
+.order-confirmation {
+  max-width: 520px;
+  margin: 44px auto 0;
+  padding: 34px 24px;
+  border: 1px solid rgba(36, 44, 34, 0.09);
+  border-radius: 5px;
+  background: #fbfaf6;
+  text-align: center;
+  box-shadow: 0 8px 22px rgba(36, 44, 34, 0.035);
+}
+
+.confirmation-mark {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e9efdc;
+  color: var(--green);
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.order-confirmation h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.order-confirmation p {
+  margin: 8px 0 20px;
+  color: #747970;
+  font-size: 12px;
+}
+
+.new-order {
+  padding: 10px 14px;
+  border: 1px solid #d9dccd;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--green);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.new-order:hover {
+  background: #edf0e6;
+}
+
 .site-footer {
   padding: 23px 7.2%;
   display: flex;
@@ -358,6 +603,16 @@ a {
   .menu-table tbody th,
   .menu-table tbody td {
     font-size: 11px;
+  }
+
+  .menu-item-name {
+    display: block;
+    margin: 0 0 7px;
+  }
+
+  .cart {
+    margin-top: 32px;
+    padding: 21px 17px;
   }
 
   .hero-note {
