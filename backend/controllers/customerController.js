@@ -1,6 +1,7 @@
 // CUS-BE-02: Registration API
 // CUS-BE-03: Login API
 
+const jwt = require('jsonwebtoken');
 const Customer = require('../models/customer');
 const { hashPassword, comparePassword } = require('../utils/password');
 const { successResponse, errorResponse } = require('../utils/errorResponse');
@@ -43,12 +44,16 @@ function login(req, res) {
     return errorResponse(res, 401, 'Invalid email or password');
   }
 
-  return successResponse(
-    res,
-    200,
-    'Login successful',
-    Customer.toPublic(customer)
+  const token = jwt.sign(
+    { id: customer.id, email: customer.email },
+    process.env.JWT_SECRET,
+    { expiresIn: '1h' }
   );
+
+  return successResponse(res, 200, 'Login successful', {
+    customer: Customer.toPublic(customer),
+    token,
+  });
 }
 
 module.exports = { register, login };
