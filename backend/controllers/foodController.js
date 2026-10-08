@@ -1,5 +1,21 @@
 const Food = require('../models/food');
 
+async function listFoods(req, res) {
+  try {
+    const foods = await Food.find().sort({ name: 1 });
+
+    return res.status(200).json({
+      success: true,
+      data: foods
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to load foods'
+    });
+  }
+}
+
 async function searchFoods(req, res) {
   try {
     const { name } = req.query;
@@ -20,4 +36,4 @@ async function searchFoods(req, res) {
   }
 }
 
-module.exports = { searchFoods };
+module.exports = { listFoods, searchFoods };
